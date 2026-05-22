@@ -3,130 +3,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--<title>DRX Home</title>-->
-    <!-- The title will be automatically set to the filename -->
     <title id="dynamicTitle">Document</title>
+
     <script>
-        // Function to extract filename without extension and set as title
         function setTitleFromFilename() {
-            // Get the current page's path
-            const path = window.location.pathname;
-            // Extract filename from path
-            let filename = path.split('/').pop() || path;
-            // Remove .html extension if present
-            filename = filename.replace(/\.html$/, '');
-            // If filename is empty (e.g., index.html for root), use 'Home' or similar
+            let path = window.location.pathname;
+            let filename = path.split('/').pop().replace('.html', '');
             if (!filename) filename = 'Home';
-            // Capitalize first letter and set as title
             filename = filename.charAt(0).toUpperCase() + filename.slice(1);
             document.getElementById('dynamicTitle').textContent = filename;
         }
-        
-        // Run the function when the page loads
         window.onload = setTitleFromFilename;
     </script>
+
     <style>
         body {
             font-family: Arial, sans-serif;
-            line-height: 1.6;
             margin: 0;
+            background: #121212;
+            color: #e0e0e0;
+        }
+
+        header {
+            background: #1e1e1e;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid #333;
+        }
+
+        main {
+            max-width: 900px;
+            margin: auto;
             padding: 20px;
         }
-        header {
-            background-color: #f4f4f4;
-            padding: 1rem;
-            text-align: center;
+
+        h1, h2 {
+            color: #ffffff;
         }
-        main {
-            padding: 1rem;
+
+        ul {
+            padding-left: 20px;
         }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
+
         a {
-            color: #0066cc;
+            color: #4da6ff;
             text-decoration: none;
         }
+
         a:hover {
             text-decoration: underline;
+            color: #80c1ff;
         }
-        .document-list {
-            margin-top: 20px;
-        }
+
         .document-list li {
             margin-bottom: 10px;
         }
+
         .file-type {
             font-size: 0.8em;
-            color: #666;
+            color: #aaa;
             margin-left: 5px;
+        }
+
+        footer {
+            background: #1e1e1e;
+            color: #ccc;
+            text-align: center;
+            padding: 15px;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: #1a1a1a;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #2a2a2a;
         }
     </style>
 </head>
-<body>
-    <header>
-        <h1> Welcome to DRX </h1>
-    </header>
 
-    <main>
+<body>
+
+<header>
+    <h1>Welcome to DRX</h1>
+</header>
+
+<main>
+
+    <div class="card">
         <h2>About DRX</h2>
-        <p>DRX provides per SF test tool to measure CMTS scheduler performance
-	  <ul>
-		<li>MAP efficiency</li> 
-		<li>Rqst/Grnt Latency</li> 
-		<li>Queueing Delay</li> 
-		<li>PLR and</li> 
-		<li>Throughput Utilization</li>
-	  </ul>
-	</p>
-        
+        <p>DRX provides per SF test tool to measure CMTS scheduler performance:</p>
+        <ul>
+            <li>MAP efficiency</li>
+            <li>Request/Grant Latency</li>
+            <li>Queueing Delay</li>
+            <li>PLR</li>
+            <li>Throughput Utilization</li>
+        </ul>
+    </div>
+
+    <div class="card">
         <h2>Products and Services</h2>
         <ul>
-            	<li><a href="webDev/indexMfolders.html">QosWatch</a></li>
-		<li><a href="webDev/document-index.html">Documents</a></li>
+            <li><a href="webDev/indexMfolders.html">QosWatch</a></li>
+            <li><a href="webDev/document-index.html">Documents</a></li>
         </ul>
+    </div>
 
+    <div class="card">
         <h2>Documents</h2>
         <ul class="document-list">
             <li>
-		<a href="#" onclick="openFileWithCacheBuster()">Open Document</a>
-		<script>
-		function openFileWithCacheBuster() {
-		  const path = 'file:///C:/pz/Next-Steps/---NEXT/DRX/TransportPerformance/Gauging%20CMTS%20Scheduler%20Performance%20Rev2.docx';
-		  window.open(path + '?v=' + Date.now(), '_blank');
-		}
-		</script>
-                <!-- <a href="file:///C:/pz/Next-Steps/---NEXT/DRX/TransportPerformance/Gauging%20CMTS%20Scheduler%20Performance%20Rev2.docx">Open DOCX (usually read-only)</a>-->
-                <span class="file-type">(Word Document)</span>
+                <a href="files/sample.docx">Sample DOCX</a>
+                <span class="file-type">(Word)</span>
             </li>
             <li>
-                <a href="file:///C:/pz/Next-Steps/---NEXT/job/Ntwking/IP Routing/RnD jobs/24-0916 SpaceBridge/DVB-RCS2/2009 DVB-RCS Guide tr_101790v010401p.pdf">pdf doc example</a>
+                <a href="files/sample.pdf">PDF Example</a>
                 <span class="file-type">(PDF)</span>
             </li>
             <li>
-                <a href="file:///C:/pz/Next-Steps/pzVcm/References/Latency/2015 WhiteG - DOCSIS3.1 ActiveQueueMgr.pdf">another pdf doc example</a>
-                <span class="file-type">(PDF)</span>
-            </li>
-            <li>
-                <a href="file:///C:/Users/paulz/Desktop/Journal2024.xlsx">journal</a>
+                <a href="files/journal.xlsx">Journal</a>
                 <span class="file-type">(Excel)</span>
             </li>
             <li>
-                <a href="file:///C:/pz/photos/2025 pz/2000-SPAR.jpg">Photo</a>
-                <span class="file-type">(PDF)</span>
+                <a href="files/photo.jpg">Photo</a>
+                <span class="file-type">(Image)</span>
             </li>
         </ul>
-    	<!-- <a href="../index.html">Back to Home</a> -->
-    </main>
-    <a href="index.html">Back to Home</a>
-    <footer>
-        <p>&copy; 2025 DRX Inc. All rights reserved.</p>
-    </footer>
+    </div>
+
+</main>
+
+<footer>
+    <p>&copy; 2025 DRX Inc. All rights reserved.</p>
+</footer>
+
 </body>
 </html>
